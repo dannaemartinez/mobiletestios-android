@@ -6,7 +6,9 @@ To run Android:
 ```
 appium
 ```
+```
 node test_android.js
+```
 ```
 emulator -avd testing
 ```
@@ -15,7 +17,9 @@ To run iOS:
 ```
 appium
 ```
+```
 node test_ios.js
+```
 ```
 open -a simulator
 ```
