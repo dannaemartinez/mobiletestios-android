@@ -22,8 +22,7 @@ describe('iOS Test', function () {
   it('Trip submit', async function () {
     await driver.url('/');
     const iosHome = new IOSHome(driver); //leer más sobre instancias 
-    //await iosHome.gotoAddTrip();
-    await iosHome.date.click();          
+    await iosHome.gotoAddTrip();          
     await iosHome.introduceDate();
     await iosHome.introducePlace();
     await iosHome.introduceType();

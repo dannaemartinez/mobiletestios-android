@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "test": "mocha 'test/ios.spec.js'"
+    "test": "mocha 'test/ios.spec.js'",
+    "e2e": "mocha 'test/android.spec.js'"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +22,8 @@
     "webdriverio": "^8.36.1"
   },
   "dependencies": {
-    "babel": "^6.23.0"
+    "babel": "^6.23.0",
+    "chromedriver": "^124.0.1"
   },
   "directories": {
     "test": "test"

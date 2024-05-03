@@ -1,21 +1,44 @@
-import { By } from 'selenium-webdriver';
-import App from './app';
+import App from './app.js';
 
-class Android extends App {
+class AndroidHome extends App {
     constructor(driver) {
+        super(driver);
         this.driver = driver;
-        this.iconCalendar = By.css('a:nth-child(2) path');
-        this.dateInput = By.css('#date');
-        this.loginButton = By.xpath('//android.view.View[@content-desc="05 April 2024"]');
-        const setButton = 'new UiSelector().resourceId("android:id/button1")';
-
     }
+    get iconCalendar(){ return this.driver.$('a:nth-child(2) path')};
+    get dateInput(){ return this.driver.$('#date')};
+    get setDate(){ return this.driver.$('//android.view.View[@content-desc="05 April 2024"]')};
+    get setButton (){ return this.driver.$('new UiSelector().resourceId("android:id/button1")')};
+    get setDateButton(){return this.driver.$(`android=${this.setButton}`)};
+    get placeInput (){return this.driver.$('.android.widget.EditText')};
+    get typeSelector (){return this.driver.$$('.android.view.View')[3]};
+    get selectOptionClub (){return this.driver.$('.android.widget.CheckedTextView')};
+    get submitButton (){return this.driver.$('.android.widget.Button')}
 
-    async login(username, password) {
-        await $(this.usernameInput).setValue(username);
-        await $(this.passwordInput).setValue(password);
-        await $(this.loginButton).click();
-    }
+
+    async gotoAddTrip() {
+        await this.iconCalendar.click();
+      }
+      async goToDate() {
+        await this.dateInput.click();
+      }
+      async introduceDate() {
+        await this.setDate.click();
+        await this.setDateButton.click();
+      }
+      async introducePlace() {
+        await this.placeInput.setValue('new place');
+      }
+      async introduceType() {
+        await this.typeSelector.click();
+        await this.selectOptionClub.click();
+      }
+      async saveRegister() {
+        await this.submitButton.click();
+      }
+    //   async goToRegisters() {
+    //     await this.registersIcon.click();
+    //   }
 }
 
-module.exports = LoginPage;
+export default AndroidHome;

@@ -6,32 +6,32 @@ class IOSHome extends App {
     this.driver = driver;
   }
   get calendarIcon() {
-    return this.driver.findElement(
+    return this.driver.$(
       '//XCUIElementTypeOther[@name="navigation"]/XCUIElementTypeLink[2]');
   }
   get date() {
-    return this.driver.findElement('//XCUIElementTypeOther[@name="Date:"]');
+    return this.driver.$('//XCUIElementTypeOther[@name="Date:"]');
   }
   get setDate() {
-    return this.driver.findElement('//XCUIElementTypeStaticText[@name="19"]');
+    return this.driver.$('//XCUIElementTypeStaticText[@name="19"]');
   }
   get saveDateButton() {
-    return this.driver.findElement('#Done');
+    return this.driver.$('#Done');
   }
   get placeInput() {
-    return this.driver.findElement('//XCUIElementTypeTextField[@name="Place:"]');
+    return this.driver.$('//XCUIElementTypeTextField[@name="Place:"]');
   }
   get typeSelector() {
-    return this.driver.findElement('~Type:');
+    return this.driver.$('~Type:');
   }
   get selectOptionClub() {
-    return this.driver.findElement('~Club');
+    return this.driver.$('~Club');
   }
   get submitButton() {
-    return this.driver.findElement('~SUBMIT');
+    return this.driver.$('~SUBMIT');
   }
   get registersIcon() {
-    return this.driver.findElement('//XCUIElementTypeOther[@name="navigation"]/XCUIElementTypeLink[3]');
+    return this.driver.$('//XCUIElementTypeOther[@name="navigation"]/XCUIElementTypeLink[3]');
   }
 
   async gotoAddTrip() {
