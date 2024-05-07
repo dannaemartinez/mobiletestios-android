@@ -1,6 +1,8 @@
 import { remote } from 'webdriverio';
 import { androidCaps } from './capabilities.js';
 import AndroidHome from './pageObjects/androidHome.js';
+import {tripOptions, dateOptions, typeOptions} from './readExcel.js';
+let size = dateOptions.length;
 
 const wdOpts = {
   hostname: process.env.APPIUM_HOST || 'localhost',
@@ -20,15 +22,17 @@ describe('Android test', function () {
     await driver.deleteSession();
   });
   it('Trip submit', async function () {
+    for(let i = 0; i < size; i++){
     await driver.url('/');
     const androidHome = new AndroidHome(driver);
     await androidHome.gotoAddTrip(); 
     await androidHome.goToDate();
     await driver.switchContext('NATIVE_APP');         
-    await androidHome.introduceDate();
-    await androidHome.introducePlace();
-    await androidHome.introduceType();
+    await androidHome.introduceDate(dateOptions[i]);
+    await androidHome.introducePlace(tripOptions[i]);
+    await androidHome.introduceType(typeOptions[i]);
     await androidHome.saveRegister();
     await androidHome.goToRegisters();
+    }
   });
 });

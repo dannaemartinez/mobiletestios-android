@@ -1,5 +1,4 @@
 import App from './app.js';
-
 class AndroidHome extends App {
     constructor(driver) {
         super(driver);
@@ -22,16 +21,16 @@ class AndroidHome extends App {
       async goToDate() {
         await this.dateInput.click();
       }
-      async introduceDate() {
-        await this.setDate.click();
+      async introduceDate(param) {
+        await this.setDate.click(param);
         await this.setDateButton.click();
       }
-      async introducePlace() {
-        await this.placeInput.setValue('new place');
+      async introducePlace(param) {
+        await this.placeInput.setValue(param);
       }
-      async introduceType() {
+      async introduceType(param) {
         await this.typeSelector.click();
-        await this.selectOptionClub.click();
+        await this.selectOptionClub.click(param);
       }
       async saveRegister() {
         await this.submitButton.click();

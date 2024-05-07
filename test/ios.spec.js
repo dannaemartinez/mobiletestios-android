@@ -1,6 +1,8 @@
 import { remote } from 'webdriverio';
 import { iphoneCaps } from './capabilities.js';
 import IOSHome from './pageObjects/iosHome.js';
+import {tripOptions, dateOptions, typeOptions} from './readExcel.js';
+let size = dateOptions.length;
 
 const wdOpts = {
   hostname: process.env.APPIUM_HOST || 'localhost',
@@ -20,13 +22,15 @@ describe('iOS Test', function () {
     await driver.deleteSession();
   });
   it('Trip submit', async function () {
+    for(let i = 0; i < size; i++){
     await driver.url('/');
     const iosHome = new IOSHome(driver); //leer más sobre instancias 
     await iosHome.gotoAddTrip();          
-    await iosHome.introduceDate();
-    await iosHome.introducePlace();
-    await iosHome.introduceType();
+    await iosHome.introduceDate(dateOptions[i]);
+    await iosHome.introducePlace(tripOptions[i]);
+    await iosHome.introduceType(typeOptions[i]);
     await iosHome.saveRegister();
     await iosHome.goToRegisters();
+    }
   });
 });

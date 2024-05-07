@@ -37,17 +37,17 @@ class IOSHome extends App {
   async gotoAddTrip() {
     await this.calendarIcon.click();
   }
-  async introduceDate() {
+  async introduceDate(param) {
     await this.date.click();
-    await this.setDate.click();
+    await this.setDate.click(param);
     await this.saveDateButton.click();
   }
   async introducePlace() {
-    await this.placeInput.setValue('new place');
+    await this.placeInput.setValue(param);
   }
   async introduceType() {
     await this.typeSelector.click();
-    await this.selectOptionClub.click();
+    await this.selectOptionClub.click(param);
   }
   async saveRegister() {
     await this.submitButton.click();
